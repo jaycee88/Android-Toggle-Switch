@@ -215,9 +215,17 @@ public abstract class BaseToggleSwitch extends LinearLayout implements View.OnCl
                     null);
     }
 
+    private RoundRectShape buildRect() {
+        return new RoundRectShape(
+                new float[]{cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius},
+                null,
+                null);
+    }
+
     protected void buildToggleButtons() {
         for (String label : mLabels)
             addToogleBtn(label);
+        setBackgroundColors(inactiveBgColor);
     }
 
     protected void disable(int position) {
@@ -261,10 +269,16 @@ public abstract class BaseToggleSwitch extends LinearLayout implements View.OnCl
     protected abstract void onClickOnToggleSwitch(int position);
 
     protected void setColors(ToggleSwitchButton toggleSwitchButton, int bgColor, int textColor) {
-        ShapeDrawable sd = new ShapeDrawable(buildRect(toggleSwitchButton));
+        ShapeDrawable sd = new ShapeDrawable(buildRect());
         sd.getPaint().setColor(bgColor);
         toggleSwitchButton.getView().setBackground(sd);
         toggleSwitchButton.getTextView().setTextColor(textColor);
+    }
+
+    protected void setBackgroundColors(int bgColor) {
+        ShapeDrawable sd = new ShapeDrawable(buildRect());
+        sd.getPaint().setColor(bgColor);
+        setBackground(sd);
     }
 
     public void setLabels(ArrayList<String> labels) {
