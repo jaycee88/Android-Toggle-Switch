@@ -3,6 +3,7 @@ package belka.us.androidtoggleswitch.widgets;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.support.v4.content.ContextCompat;
@@ -302,6 +303,13 @@ public abstract class BaseToggleSwitch extends LinearLayout implements View.OnCl
         for (int i = 0; i < toggleSwitchesContainer.getChildCount(); i++) {
             ToggleSwitchButton toggleSwitchButton = new ToggleSwitchButton(toggleSwitchesContainer.getChildAt(i));
             toggleSwitchButton.getTextView().setPadding(left, top, right, bottom);
+        }
+    }
+
+    public void setTextFont(Typeface font) {
+        for (int i = 0; i < toggleSwitchesContainer.getChildCount(); i++) {
+            ToggleSwitchButton toggleSwitchButton = new ToggleSwitchButton(toggleSwitchesContainer.getChildAt(i));
+            toggleSwitchButton.getTextView().setTypeface(font);
         }
     }
 
